@@ -2,7 +2,12 @@
 name: R-CMD-check
 run-name: ${{ github.actor }} has pushed code!
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
 
 jobs:
   R-CMD-check:
@@ -19,5 +24,3 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
       - uses: r-lib/actions/check-r-package@v2
-        with:
-          error-on: '"error"'
